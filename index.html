@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickLearn: 3 Minutes - Official Developer Website</title>
+    <meta name="description" content="QuickLearn: 3 Minutes - Learn anything in just 3 minutes. Premium educational app by CARTER BLAKE ASSOCIATE LTD.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b6b;
+            --gold: #f4a261;
+            --text: #ffffff;
+            --text-muted: #a8a8b3;
+            --bg-dark: #0f0f1a;
+            --bg-card: rgba(26, 26, 46, 0.8);
+            --gradient-1: linear-gradient(135deg, #e94560 0%, #f4a261 100%);
+            --gradient-2: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--bg-dark);
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 80%, rgba(233, 69, 96, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(244, 162, 97, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(22, 33, 62, 0.5) 0%, transparent 50%);
+            animation: bgMove 20s ease-in-out infinite;
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(2%, 2%) rotate(1deg); }
+            66% { transform: translate(-1%, 1%) rotate(-1deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(15, 15, 26, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(233, 69, 96, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(233, 69, 96, 0.15);
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent-light);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: var(--text);
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        /* Company Info Banner */
+        .company-banner {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            padding: 3rem 5%;
+            background: var(--bg-card);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            flex-wrap: wrap;
+        }
+
+        .banner-item {
+            text-align: center;
+        }
+
+        .banner-item span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .banner-item strong {
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Apps Section */
+        #apps {
+            background: linear-gradient(180deg, transparent 0%, rgba(26, 26, 46, 0.3) 100%);
+        }
+
+        .app-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .app-card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-1);
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(233, 69, 96, 0.3);
+            box-shadow: 0 20px 60px rgba(233, 69, 96, 0.15);
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+        }
+
+        .app-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .app-features {
+            list-style: none;
+        }
+
+        .app-features li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .app-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.4rem 1rem;
+            background: rgba(233, 69, 96, 0.1);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+        }
+
+        /* Company Section */
+        #company {
+            background: rgba(22, 33, 62, 0.2);
+        }
+
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .company-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .company-card:hover {
+            border-color: rgba(233, 69, 96, 0.2);
+        }
+
+        .company-card .icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(233, 69, 96, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .company-card span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .company-card strong {
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(180deg, rgba(22, 33, 62, 0.2) 0%, transparent 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(233, 69, 96, 0.2);
+        }
+
+        .contact-card .icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+        }
+
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--gold);
+        }
+
+        /* Privacy & Terms Sections */
+        #privacy, #terms {
+            background: rgba(15, 15, 26, 0.5);
+        }
+
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .legal-content h3 {
+            color: var(--accent-light);
+            margin: 2rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .legal-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .legal-content p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .legal-content ul {
+            color: var(--text-muted);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 15, 26, 0.98);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .company-banner {
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .legal-content {
+                padding: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <div class="logo-icon">QL</div>
+            <span class="logo-text">QuickLearn</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#apps">Apps</a></li>
+            <li><a href="#company">Company</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#privacy">Privacy</a></li>
+            <li><a href="#terms">Terms</a></li>
+        </ul>
+        <div class="mobile-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">Official Developer</span>
+            <h1>QuickLearn: 3 Minutes</h1>
+            <p>Official Developer Website. Welcome to QuickLearn, your gateway to bite-sized learning. Master new skills in just 3 minutes a day with our premium educational application.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Contact Support</a>
+                <a href="#privacy" class="btn btn-secondary">Privacy Policy</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Banner -->
+    <div class="company-banner">
+        <div class="banner-item">
+            <span>Company</span>
+            <strong>CARTER BLAKE ASSOCIATE LTD</strong>
+        </div>
+        <div class="banner-item">
+            <span>Platform</span>
+            <strong>Google Play Store</strong>
+        </div>
+        <div class="banner-item">
+            <span>Focus</span>
+            <strong>Educational Apps</strong>
+        </div>
+    </div>
+
+    <!-- Apps Section -->
+    <section id="apps">
+        <div class="section-header">
+            <h2>Our Apps</h2>
+            <p>Premium mobile learning experiences, available on Google Play</p>
+        </div>
+        <div class="app-showcase">
+            <div class="app-card">
+                <div class="app-icon">📚</div>
+                <h3>QuickLearn: 3 Minutes</h3>
+                <p>Transform your spare moments into learning opportunities. Our innovative micro-learning platform delivers knowledge in perfectly sized 3-minute lessons.</p>
+                <ul class="app-features">
+                    <li>Bite-sized 3-minute lessons</li>
+                    <li>Wide range of topics</li>
+                    <li>Progress tracking</li>
+                    <li>Offline access</li>
+                    <li>Daily reminders</li>
+                </ul>
+                <div class="tags">
+                    <span class="tag">Education</span>
+                    <span class="tag">Learning</span>
+                    <span class="tag">Productivity</span>
+                </div>
+            </div>
+            <div class="app-card">
+                <div class="app-icon">🎯</div>
+                <h3>Find Us on Google Play</h3>
+                <p>Our apps are available on the Google Play Store under the developer name "CARTER BLAKE ASSOCIATE LTD".</p>
+                <ul class="app-features">
+                    <li>High-performance native application</li>
+                    <li>Privacy-first design principles</li>
+                    <li>Regular updates and support</li>
+                    <li>Clean, intuitive interface</li>
+                    <li>Compliance with Google Play policies</li>
+                </ul>
+                <div class="tags">
+                    <span class="tag">Verified Developer</span>
+                    <span class="tag">Premium Quality</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Section -->
+    <section id="company">
+        <div class="section-header">
+            <h2>Company Information</h2>
+            <p>Verified business entity and developer credentials</p>
+        </div>
+        <div class="company-grid">
+            <div class="company-card">
+                <div class="icon">🏢</div>
+                <span>Developer Name</span>
+                <strong>QuickLearn</strong>
+            </div>
+            <div class="company-card">
+                <div class="icon">📋</div>
+                <span>Legal Company Name</span>
+                <strong>CARTER BLAKE ASSOCIATE LTD</strong>
+            </div>
+            <div class="company-card">
+                <div class="icon">✉️</div>
+                <span>Email Address</span>
+                <strong>dev@carter-apps.com</strong>
+            </div>
+            <div class="company-card">
+                <div class="icon">📞</div>
+                <span>Phone Number</span>
+                <strong>07438 757781</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <h2>Contact Us</h2>
+            <p>Get in touch with our team</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="icon">✉️</div>
+                <h3>Email</h3>
+                <p>For support and inquiries</p>
+                <a href="mailto:dev@carter-apps.com">dev@carter-apps.com</a>
+            </div>
+            <div class="contact-card">
+                <div class="icon">📞</div>
+                <h3>Phone</h3>
+                <p>Business hours</p>
+                <a href="tel:07438757781">07438 757781</a>
+            </div>
+            <div class="contact-card">
+                <div class="icon">🏢</div>
+                <h3>Business Identity</h3>
+                <p>Registered company</p>
+                <strong style="color: var(--text);">CARTER BLAKE ASSOCIATE LTD</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section id="privacy">
+        <div class="section-header">
+            <h2>Privacy Policy</h2>
+            <p>Website and Developer Privacy Policy</p>
+        </div>
+        <div class="legal-content">
+            <p class="last-updated">Last Updated: January 2026</p>
+            
+            <h3>1. Scope</h3>
+            <p>This Privacy Policy applies to the QuickLearn developer website operated by CARTER BLAKE ASSOCIATE LTD. This policy describes how we collect, use, and protect information when you visit our website or contact us. Individual applications published by QuickLearn may have their own separate privacy policies.</p>
+
+            <h3>2. Information We Collect</h3>
+            <p>We may collect the following types of information:</p>
+            <p><strong>Contact Information:</strong> When you contact us via email or other means, we collect the information you provide, including your email address, name, and the content of your message.</p>
+            <p><strong>Server Logs:</strong> Our web servers automatically collect basic technical information, including IP addresses, browser type, referring pages, and timestamps. This data is collected for security and operational purposes.</p>
+
+            <h3>3. How We Use Information</h3>
+            <p>We use collected information for the following purposes:</p>
+            <ul>
+                <li><strong>Support:</strong> To respond to your inquiries, provide customer support, and communicate about our services and applications.</li>
+                <li><strong>Security:</strong> To protect our website, detect and prevent fraud, and ensure the security of our systems and users.</li>
+                <li><strong>Compliance:</strong> To comply with legal obligations, enforce our terms of service, and respond to lawful requests from authorities.</li>
+            </ul>
+
+            <h3>4. Information Sharing</h3>
+            <p>We do not sell, trade, or rent your personal information to third parties. We may share information only in the following circumstances: with service providers who assist in operating our website and services, under strict confidentiality agreements; when required by law or to respond to legal process; to protect our rights, property, or safety, or that of our users or the public.</p>
+
+            <h3>5. Data Retention</h3>
+            <p>We retain contact information and correspondence for as long as necessary to provide support and fulfill our business purposes. Server logs are typically retained for a limited period for security analysis and then deleted or anonymized.</p>
+
+            <h3>6. Contact Information</h3>
+            <p>For privacy-related inquiries, please contact us at:</p>
+            <p>CARTER BLAKE ASSOCIATE LTD<br>
+            Email: <a href="mailto:dev@carter-apps.com">dev@carter-apps.com</a><br>
+            Phone: <a href="tel:07438757781">07438 757781</a></p>
+        </div>
+    </section>
+
+    <!-- Terms Section -->
+    <section id="terms">
+        <div class="section-header">
+            <h2>Terms of Service</h2>
+            <p>Website Terms and Conditions</p>
+        </div>
+        <div class="legal-content">
+            <p class="last-updated">Last Updated: January 2026</p>
+            
+            <h3>1. Acceptance of Terms</h3>
+            <p>By accessing and using this website, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use this website. These terms apply to all visitors, users, and others who access this website.</p>
+
+            <h3>2. Website Use Restrictions</h3>
+            <p>When using this website, you agree not to:</p>
+            <ul>
+                <li>Use the website for any unlawful purpose or in violation of any applicable laws;</li>
+                <li>Attempt to gain unauthorized access to any portion of the website or its systems;</li>
+                <li>Interfere with or disrupt the website's operation or servers;</li>
+                <li>Transmit any malicious code, viruses, or harmful data;</li>
+                <li>Collect or harvest any information from the website without authorization;</li>
+                <li>Impersonate any person or entity or misrepresent your affiliation.</li>
+            </ul>
+
+            <h3>3. Intellectual Property</h3>
+            <p>All content on this website, including but not limited to text, graphics, logos, images, and software, is the property of CARTER BLAKE ASSOCIATE LTD or its content suppliers and is protected by intellectual property laws. You may not reproduce, distribute, modify, or create derivative works from any content without our express written permission.</p>
+
+            <h3>4. Third-Party Links</h3>
+            <p>This website may contain links to third-party websites or services that are not owned or controlled by us. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services. We strongly advise you to read the terms and privacy policies of any third-party websites you visit.</p>
+
+            <h3>5. Disclaimer of Warranties</h3>
+            <p>This website is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied. We do not warrant that the website will be uninterrupted, secure, or error-free. We make no warranties regarding the accuracy, reliability, or completeness of any content on this website.</p>
+
+            <h3>6. Limitation of Liability</h3>
+            <p>To the fullest extent permitted by law, CARTER BLAKE ASSOCIATE LTD shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from your use of this website.</p>
+
+            <h3>7. Changes to Terms</h3>
+            <p>We reserve the right to modify or replace these Terms of Service at any time at our sole discretion. Material changes will be indicated by updating the "Last Updated" date. Your continued use of the website after any changes constitutes acceptance of the new terms.</p>
+
+            <h3>8. Contact Information</h3>
+            <p>For questions about these Terms of Service, please contact us at:</p>
+            <p>CARTER BLAKE ASSOCIATE LTD<br>
+            Email: <a href="mailto:dev@carter-apps.com">dev@carter-apps.com</a><br>
+            Phone: <a href="tel:07438757781">07438 757781</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <div class="logo-icon">QL</div>
+                    <span class="logo-text">QuickLearn</span>
+                </div>
+                <p>CARTER BLAKE ASSOCIATE LTD<br><br>Premium educational applications for modern learners.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#apps">Our Apps</a></li>
+                    <li><a href="#company">Company</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:dev@carter-apps.com">dev@carter-apps.com</a></li>
+                    <li><a href="tel:07438757781">07438 757781</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 QuickLearn. CARTER BLAKE ASSOCIATE LTD. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(15, 15, 26, 0.98)';
+            } else {
+                nav.style.background = 'rgba(15, 15, 26, 0.9)';
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.app-card, .company-card, .contact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
